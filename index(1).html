@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="NotForexee Web — Minecraft, YouTube & Discord Community." />
+  <title>🌐NᴏᴛFᴏʀᴇxᴇ Wᴇʙ</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    :root{
+      --bg:#03070d; --panel:rgba(7,13,23,.82); --line:#168cff;
+      --blue:#1598ff; --blue2:#66c7ff; --text:#f5f8ff; --muted:#aab5c7;
+    }
+    html{scroll-behavior:smooth}
+    body{
+      font-family:Inter,Segoe UI,Arial,sans-serif;
+      color:var(--text); background:var(--bg); overflow-x:hidden;
+    }
+    a{text-decoration:none;color:inherit}
+    .page{
+      min-height:100vh;
+      background:
+        linear-gradient(180deg,rgba(1,5,10,.30),rgba(1,5,10,.92)),
+        url("background.png") center top/cover fixed no-repeat;
+    }
+    .page:after{
+      content:""; position:fixed; inset:0; pointer-events:none; z-index:0;
+      background:radial-gradient(circle at 50% 18%,rgba(21,152,255,.10),transparent 38%);
+    }
+    nav{
+      position:sticky;top:0;z-index:20;
+      height:74px;display:flex;align-items:center;justify-content:space-between;
+      padding:0 6%; background:rgba(2,7,13,.72);
+      border-bottom:1px solid rgba(102,199,255,.18); backdrop-filter:blur(14px);
+    }
+    .logo{font-weight:900;letter-spacing:.4px;font-size:22px}
+    .logo span{color:var(--blue)}
+    .links{display:flex;gap:28px;color:#d9e4f2;font-size:14px;font-weight:700}
+    .links a:hover{color:var(--blue2)}
+    .nav-btn{
+      padding:10px 16px;border:1px solid rgba(21,152,255,.7);
+      border-radius:9px;background:rgba(21,152,255,.10);font-weight:800;font-size:13px;
+    }
+    main{position:relative;z-index:1}
+    .hero{
+      min-height:calc(100vh - 74px); display:grid;place-items:center;
+      text-align:center;padding:80px 20px 100px;
+    }
+    .badge{
+      display:inline-flex;gap:9px;align-items:center;padding:8px 13px;
+      border:1px solid rgba(102,199,255,.35);border-radius:999px;
+      background:rgba(4,16,29,.65);color:#cfeaff;font-size:12px;
+      letter-spacing:2px;font-weight:800;text-transform:uppercase;
+    }
+    .crown{font-size:45px;margin:22px 0 5px;filter:drop-shadow(0 0 16px rgba(21,152,255,.55))}
+    h1{
+      font-size:clamp(44px,8vw,92px);line-height:.95;font-weight:950;
+      letter-spacing:-3px;text-transform:uppercase;
+      text-shadow:0 8px 35px rgba(0,0,0,.55);
+    }
+    h1 .white{color:#fff} h1 .blue{color:var(--blue)}
+    .subtitle{margin:20px auto 0;color:#d7e3f1;letter-spacing:7px;font-size:14px;font-weight:700}
+    .tagline{margin-top:18px;color:#6bc6ff;font-size:20px;font-weight:800;letter-spacing:3px}
+    .cta{display:flex;justify-content:center;gap:13px;flex-wrap:wrap;margin-top:34px}
+    .btn{
+      padding:14px 22px;border-radius:9px;border:1px solid rgba(21,152,255,.7);
+      font-weight:900;font-size:13px;letter-spacing:.5px;
+      background:linear-gradient(135deg,#0b78d1,#16a4ff);box-shadow:0 10px 35px rgba(0,120,255,.18);
+    }
+    .btn.alt{background:rgba(3,11,19,.75);box-shadow:none}
+    .btn:hover{transform:translateY(-2px);filter:brightness(1.1)}
+    .section{padding:90px 6%;max-width:1250px;margin:auto}
+    .section-title{text-align:center;margin-bottom:38px}
+    .eyebrow{color:var(--blue2);font-size:12px;letter-spacing:3px;font-weight:900}
+    h2{font-size:clamp(28px,4vw,46px);margin-top:9px}
+    .grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .card{
+      background:linear-gradient(145deg,rgba(9,19,32,.88),rgba(3,8,15,.88));
+      border:1px solid rgba(102,199,255,.16);border-radius:15px;padding:25px;
+      box-shadow:0 18px 50px rgba(0,0,0,.25);transition:.25s;
+    }
+    .card:hover{transform:translateY(-5px);border-color:rgba(21,152,255,.55)}
+    .icon{font-size:34px;margin-bottom:15px}
+    .card h3{font-size:19px;margin-bottom:8px}
+    .card p{color:var(--muted);line-height:1.65;font-size:14px}
+    .card a{display:inline-block;margin-top:17px;color:var(--blue2);font-weight:900;font-size:13px}
+    .updates{grid-template-columns:repeat(3,1fr)}
+    .update-tag{font-size:10px;letter-spacing:2px;color:var(--blue2);font-weight:900}
+    .community{
+      max-width:1000px;margin:20px auto 0;padding:38px;border-radius:18px;
+      background:rgba(4,11,19,.78);border:1px solid rgba(21,152,255,.25);
+      display:flex;align-items:center;justify-content:space-between;gap:25px;
+    }
+    .community h3{font-size:25px}.community p{color:var(--muted);margin-top:7px}
+    footer{
+      border-top:1px solid rgba(102,199,255,.13);padding:30px 6%;
+      text-align:center;color:#8492a7;font-size:12px;letter-spacing:1px;
+      background:rgba(1,5,10,.75);
+    }
+    .socials{display:flex;justify-content:center;gap:18px;margin:18px 0 25px;flex-wrap:wrap}
+    .socials a{color:#dbe9f7}.socials a:hover{color:var(--blue2)}
+    @media(max-width:850px){
+      .links{display:none}.grid,.updates{grid-template-columns:1fr}
+      .community{flex-direction:column;text-align:center}
+      .hero{padding-top:65px}.subtitle{letter-spacing:3px}
+      .page{background-attachment:scroll}
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+  <nav>
+    <a class="logo" href="#home">🌐NᴏᴛFᴏʀᴇxᴇ <span>Wᴇʙ</span></a>
+    <div class="links">
+      <a href="#home">HOME</a>
+      <a href="#updates">UPDATES</a>
+      <a href="#community">COMMUNITY</a>
+      <a href="#social">SOCIAL</a>
+    </div>
+    <a class="nav-btn" href="https://discord.gg/CtbAdYugsJ" target="_blank">JOIN DISCORD</a>
+  </nav>
+
+  <main>
+    <section class="hero" id="home">
+      <div>
+        <div class="badge">MINECRAFT • YOUTUBE • DISCORD</div>
+        <div class="crown">♛</div>
+        <h1><span class="white">NᴏᴛFᴏʀᴇxᴇ</span> <span class="blue">Wᴇʙ</span></h1>
+        <div class="subtitle">PLAY &nbsp;•&nbsp; WATCH &nbsp;•&nbsp; JOIN</div>
+        <div class="tagline">SMALL COMMUNITY • BIG DREAMS</div>
+        <div class="cta">
+          <a class="btn" href="https://www.youtube.com/@Notforexee003" target="_blank">▶ SUBSCRIBE</a>
+          <a class="btn alt" href="https://discord.gg/CtbAdYugsJ" target="_blank">◈ JOIN DISCORD</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="updates">
+      <div class="section-title">
+        <div class="eyebrow">LATEST</div>
+        <h2>Updates</h2>
+      </div>
+      <div class="grid updates">
+        <article class="card">
+          <div class="update-tag">NEW VIDEO</div>
+          <div class="icon">🎬</div>
+          <h3>New Minecraft Video</h3>
+          <p>নতুন Minecraft video আপলোড হলে এখানে update/card যোগ করতে পারবে।</p>
+          <a href="https://www.youtube.com/@Notforexee003" target="_blank">WATCH ON YOUTUBE →</a>
+        </article>
+        <article class="card">
+          <div class="update-tag">COMMUNITY</div>
+          <div class="icon">💬</div>
+          <h3>Discord Community</h3>
+          <p>Gaming, Minecraft, events এবং community chat-এর জন্য আমাদের Discord-এ join করো।</p>
+          <a href="https://discord.gg/CtbAdYugsJ" target="_blank">JOIN SERVER →</a>
+        </article>
+        <article class="card">
+          <div class="update-tag">LIVE</div>
+          <div class="icon">🔴</div>
+          <h3>Live Streams</h3>
+          <p>Hardcore, survival এবং special Minecraft live stream-এর updates এখানে দেখানো যাবে।</p>
+          <a href="https://www.youtube.com/@Notforexee003" target="_blank">OPEN CHANNEL →</a>
+        </article>
+      </div>
+    </section>
+
+    <section class="section" id="community">
+      <div class="community">
+        <div>
+          <div class="eyebrow">COMMUNITY HUB</div>
+          <h3>PLAY TOGETHER, WATCH TOGETHER & GROW TOGETHER. 🚀</h3>
+          <p>NotForexee community-এর official Minecraft & YouTube hub.</p>
+        </div>
+        <a class="btn" href="https://discord.gg/CtbAdYugsJ" target="_blank">JOIN NOW →</a>
+      </div>
+    </section>
+
+    <section class="section" id="social">
+      <div class="section-title">
+        <div class="eyebrow">STAY CONNECTED</div>
+        <h2>Social Media</h2>
+      </div>
+      <div class="grid">
+        <article class="card">
+          <div class="icon">▶️</div>
+          <h3>YouTube</h3>
+          <p>Latest Minecraft videos, Shorts এবং livestreams.</p>
+          <a href="https://www.youtube.com/@Notforexee003" target="_blank">@Notforexee003 →</a>
+        </article>
+        <article class="card">
+          <div class="icon">💙</div>
+          <h3>Discord</h3>
+          <p>Community chat, gaming friends এবং server updates.</p>
+          <a href="https://discord.gg/CtbAdYugsJ" target="_blank">JOIN DISCORD →</a>
+        </article>
+        <article class="card">
+          <div class="icon">⛏️</div>
+          <h3>Minecraft</h3>
+          <p>Build • Explore • Survive — our main gaming world.</p>
+          <a href="#community">EXPLORE COMMUNITY →</a>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="socials">
+      <a href="https://www.youtube.com/@Notforexee003" target="_blank">YOUTUBE</a>
+      <a href="https://discord.gg/CtbAdYugsJ" target="_blank">DISCORD</a>
+      <a href="#home">MINECRAFT</a>
+    </div>
+    © 2026 NᴏᴛFᴏʀᴇxᴇ Wᴇʙ • All Rights Reserved
+  </footer>
+</div>
+</body>
+</html>
